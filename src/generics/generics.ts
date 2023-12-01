@@ -56,3 +56,24 @@ function sortThing<T>(data : Array<T>, key: keyof T){
 }
 
 sortThing<IFooBar>(fooBars, 'foo')
+
+class Animal{
+    public legCount: number;
+    constructor(legCount:number){
+        this.legCount = legCount;
+    }
+
+}
+
+class cat extends Animal{
+    constructor(){
+        super(4);
+    }
+}
+
+
+function printLegCount<T extends Animal>(animal:T){
+    console.log(`my leg count is: ${animal.legCount}`)
+}
+
+export {}

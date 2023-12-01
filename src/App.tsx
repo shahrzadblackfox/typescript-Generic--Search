@@ -1,23 +1,28 @@
 import React from 'react';
+import widgets  from './mock-data/widgets';
+import people from './mock-data/people.ts';
+import genericSearch from './utlist/genericSearch';
 
 
 function App() {
+  const query = '';
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h2>Widgets: </h2>
+    {widgets.filter((widget)=> genericSearch(widget,['title','description'], query,false)).map(widget =>{
+      return(
+        <h3>{widget.title}</h3>
+      )
+    })}
+    <h2>
+      People: 
+    </h2>
+    {people.filter((person)=> genericSearch(person,['firstName','lastName','eyeColor'], query,false)).map(person =>{
+      return(
+        <h3>{person.firstName} {person.lastName}</h3>
+      )
+    })}
+    </>
   );
 }
 
