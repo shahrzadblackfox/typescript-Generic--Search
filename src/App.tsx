@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import widgets  from './mock-data/widgets';
 import people from './mock-data/people.ts';
 import genericSearch from './utlist/genericSearch';
+import { SearchUInput } from './components/Searchinput';
 
 
 function App() {
-  const query = '';
-  return (
+  //const query = '';
+  const [query, setQuery] = useState<string>('');
+    return (
     <>
+    <SearchUInput setSearchQuery={setQuery}/>
     <h2>Widgets: </h2>
     {widgets.filter((widget)=> genericSearch(widget,['title','description'], query,false)).map(widget =>{
       return(
